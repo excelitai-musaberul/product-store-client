@@ -1,0 +1,11 @@
+.products table{
+    /* width: 100%; */
+    table-layout : fixed;
+}
+.products table td{
+    width: 100%;
+}
+.products table td th{
+    padding: 10px; 
+    border: 1px solid gray;
+}

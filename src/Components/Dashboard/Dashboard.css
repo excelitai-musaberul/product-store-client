@@ -1,0 +1,21 @@
+.sidemenu{
+    position: fixed;
+    height: 100vh;
+    background-color: rgb(46, 26, 8);
+    width: 250px;
+    padding-top: 30px;
+}
+.sidemenu ul li{
+   list-style: none;
+   font-size: 18px;
+   padding: 5px;
+}
+.sidemenu ul li a{
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+.main-content{
+  margin-left: 300px;
+}
