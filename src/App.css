@@ -1,0 +1,98 @@
+:root {
+    --primary-bg: rgb(46, 26, 8);
+    --primary-bg-hover: rgb(97, 50, 9);
+    --primary-text-hover: rgb(207, 167, 131);
+}
+
+
+.button-primary-filled {
+    background-color: var(--primary-bg);
+    color: white;
+}
+.button-primary-filled:hover {
+    background-color: var(--primary-bg-hover);
+    color: white;
+}
+
+
+/* ------------- Section Title ------------ */
+.section-title-icon {
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* ----------- Product Table ------------- */
+.custom-table-cont {
+    margin-top: 20px;
+    padding: 10px 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+}
+
+.custom-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.custom-table tr {
+    border-bottom: 1px solid rgb(209, 209, 209);
+}
+
+.custom-table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+
+.custom-table th,
+.custom-table td {
+    padding: 8px 5px;
+    vertical-align: middle;
+}
+
+.custom-table tr th {
+    font-weight: 500;
+    color: rgb(82, 82, 82);
+}
+
+.custom-table th.no-wrap,
+.custom-table td.no-wrap {
+    width: 40px;
+}
+
+.custom-table th.action-heading,
+.custom-table td.action {
+    text-align: center;
+    width: 100px;
+}
+
+.custom-table .action button {
+    padding: 5px;
+}
+
+
+
+/* ----------- Pagination ------------- */
+.pagination {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.pagination ul {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+}
+
+.pagination ul li button {
+    background-color: rgb(117, 117, 117);
+    color: white;
+    margin-right: 5px;
+    padding: 3px 10px;
+}
+
+.pagination ul li button:hover {
+    background-color: rgb(85, 85, 85);
+    color: white;
+}

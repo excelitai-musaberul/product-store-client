@@ -24,7 +24,7 @@ const Login = () => {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('user', JSON.stringify(response.data.user));  
                 if (response.data.user.email) {                 
-                    navigate('/dashboard');
+                    navigate('/dashboard/home');
                 }
             });
     }
@@ -32,7 +32,7 @@ const Login = () => {
 
     useEffect(()=>{
         if(hasValidUser()){
-            navigate('/dashboard');
+            navigate('/dashboard/home');
         }        
     }, [])
 

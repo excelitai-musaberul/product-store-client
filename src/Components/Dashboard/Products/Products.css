@@ -1,11 +1,41 @@
-.products table{
-    /* width: 100%; */
-    table-layout : fixed;
+/* ----------- Product Table Filter ------------- */
+.products .table-filter {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 }
-.products table td{
-    width: 100%;
+
+.products .table-filter .search-input {
+    border: 1px solid rgb(207, 207, 207);
+    padding: 4px 15px;
+    border-radius: 5px;
 }
-.products table td th{
-    padding: 10px; 
-    border: 1px solid gray;
+
+.products .table-filter .search-input:focus {
+    outline: none;
 }
+
+.products .table-filter .category-select {
+    border: 1px solid rgb(207, 207, 207);
+    padding: 4px 10px;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.products .table-filter .category-select:focus {
+    outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

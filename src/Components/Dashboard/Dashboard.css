@@ -1,21 +1,87 @@
 .sidemenu{
     position: fixed;
     height: 100vh;
-    background-color: rgb(46, 26, 8);
-    width: 250px;
-    padding-top: 30px;
+    background-color: var(--primary-bg);
+    width: 220px;   
+}
+.sidemenu ul{
+  padding-left: 0;
 }
 .sidemenu ul li{
-   list-style: none;
-   font-size: 18px;
-   padding: 5px;
+   list-style: none; 
+   padding: 8px 5px 8px 25px;
+   transition: all 0.2s ease;
+   color: white;
 }
-.sidemenu ul li a{
-  text-decoration: none;
+.sidemenu ul li:hover{
+   background-color: var(--primary-bg-hover);
+}
+.sidemenu ul h3{
+  padding: 15px 5px 15px 25px;
   color: white;
-  font-weight: 700;
+}
+.sidemenu ul li a{  
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+}
+.sidemenu ul li a i{ 
+  display: inline-block; 
+  width: 25px;  
 }
 
+.sidemenu .sub-sidemenu li{
+  padding-left: 50px;
+}
+.sidemenu .sub-sidemenu li a{
+  font-size: 14px;
+}
+
+
+
 .main-content{
-  margin-left: 300px;
+  margin-left: 220px;  
+}
+
+.main-content .top-nav{
+    background-color: var(--primary-bg);
+    padding: 2px 10px;
+    display: flex; justify-content: space-between;
+    align-items: center;
+}
+.main-content .top-nav p{
+    color: white;
+    margin-bottom: 0;
+}
+.main-content .top-nav button{
+ color: white;
+}
+.main-content .top-nav button:hover{
+ color: var(--primary-text-hover);
+}
+.main-content-inner{
+  padding: 10px 20px;
+}
+
+
+/* ------------------ Credit --------------- */
+.sidemenu-credit{
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;    
+  align-items: center;
+  margin-left: 10px;
+}
+.sidemenu-credit img{
+  width: 25px;
+  height: 25px;
+}
+.sidemenu-credit h6{
+  margin-left: 5px;
+  font-size: 14px; 
+  color: white;
+  text-align: center;
+  margin-bottom: 0;
 }

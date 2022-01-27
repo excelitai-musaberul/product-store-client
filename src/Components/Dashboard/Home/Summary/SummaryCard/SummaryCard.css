@@ -1,0 +1,22 @@
+.dashboard-summary-card .dashboard-summary-card-inner{
+    color: white;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.dashboard-summary-card .dashboard-summary-card-inner .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard-summary-card .dashboard-summary-card-inner .icon div{
+    background-color: white;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+.dashboard-summary-card .dashboard-summary-card-inner .icon i{
+    font-size: 45px;
+}

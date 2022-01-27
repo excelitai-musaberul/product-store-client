@@ -1,0 +1,21 @@
+.add-product{
+    
+}
+.add-product .add-product-title{
+    display: flex;
+    align-items: center;
+}
+.add-product .add-product-title .btn{
+    font-size: 40px;
+    padding: 5px;
+}
+.add-product .add-product-title .btn:hover{
+    color: var(--primary-bg-hover);    
+}
+.add-product .add-product-form{
+    width: 50%;
+}
+.add-product .add-product-form .label{
+    margin-bottom: 0;
+    margin-top: 15px;
+}
