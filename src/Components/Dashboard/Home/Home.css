@@ -1,0 +1,26 @@
+.dashboard-home .chart-cont .chart-cont-inner {
+    background-color: #f7f7f7;
+    box-shadow: rgba(221, 203, 203, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
+    border: 0;
+}
+
+.dashboard-home .ai-based-suggestions ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.dashboard-home .ai-based-suggestions li {
+    padding-left: 20px;
+    text-indent: -25px;   
+    margin-top: 8px; 
+}
+
+.dashboard-home .ai-based-suggestions li:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f00c";
+    color: rgb(72, 146, 85); 
+    margin-right: 8px;
+}

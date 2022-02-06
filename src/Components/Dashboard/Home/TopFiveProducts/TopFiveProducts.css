@@ -1,0 +1,24 @@
+.top-five-products ul{
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+.top-five-products ul li{
+    margin-bottom: 15px;
+}
+
+.top-five-products .top-five-products-cont{
+    display: flex;
+    align-items: center;
+}
+.top-five-products .top-five-products-cont img{
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 3px;
+}
+.top-five-products .top-five-products-cont h6{
+    font-size: 14px;
+}
+.top-five-products .top-five-products-cont p{
+    font-size: 13px;
+}

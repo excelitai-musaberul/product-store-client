@@ -35,7 +35,7 @@ const Summary = () => {
             id: 4,
             title: "Daily Visitors",
             amount: "149,568",
-            text: "Total orders received so far",
+            text: "Total visitors since your site publish",
             backgroundColor: "#FD8213",
             icon: "bi bi-eyeglasses"
         }
@@ -62,7 +62,7 @@ const Summary = () => {
             </div>
 
 
-            <div className="row">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
                 {
                     summaryData.map(data => <SummaryCard
                         key={data.id}

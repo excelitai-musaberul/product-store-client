@@ -26,7 +26,16 @@
 .products .table-filter .category-select:focus {
     outline: none;
 }
-
+.products .product-table img{
+    width: 80px;
+}
+.products .product-table .out-of-stock{
+    display: inline-block;
+    background-color: #ff696a;
+    padding: 3px 10px;
+    border-radius: 5px;
+    color: white;
+}
 
 
 
