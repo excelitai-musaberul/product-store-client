@@ -84,13 +84,25 @@ const Products = () => {
 
         axios.post(`http://127.0.0.1:8000/api/products/delete/${id}`, data, {
             headers: {
-                'Authorization': `Bearer ${token}`,               
+                'Authorization': `Bearer ${token}`,
             }
         })
-        .then(res => {
-            console.log(res);
-        });
-       
+            .then(res => {
+                axios.get('http://127.0.0.1:8000/api/products/', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                    .then(res => {
+                        const data = res.data;
+                        setProducts(data);
+                        setDisplayingProducts(data.slice(0, 20));
+                        const CalcPagesCount = Math.ceil(data.length / 20);
+                        setPagesCount(CalcPagesCount);
+                        setCurrentPage(1)
+                    });
+            });
+
     }
 
     return (
@@ -123,68 +135,69 @@ const Products = () => {
                 </div>
 
                 {/* -------- Product Table ---------- */}
-                <table className='custom-table product-table'>
-                    <thead>
-                        <tr>
-                            <th className='no-wrap'>Id</th>
-                            <th className='no-wrap-120'>Preview</th>
-                            <th>Product Name</th>
-                            <th>Category</th>
-                            <th>Sub-Category</th>
-                            <th className='no-wrap-100'>Price</th>
-                            <th className='no-wrap-120 text-center'>Stock</th>
-                            <th className='no-wrap-100'>Sales</th>
-                            <th className='action-heading'>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            displayingProducts.map(pd => <tr
-                                key={pd.id}
-                            >
-                                <td className='no-wrap no-wrap-100'>{pd.id}</td>
+                <div style={{overflowX: 'auto'}}>
+                    <table className='custom-table product-table'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th className='text-center'>Preview</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Sub-Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Sales</th>
+                                <th className='action-heading'>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                displayingProducts.map(pd => <tr
+                                    key={pd.id}
+                                >
+                                    <td>{pd.id}</td>
 
-                                {/* ----------- Thumbnail Image ------------- */}
-                                <td className='no-wrap-120'>
-                                    <img className='img-fluid' src={`http://127.0.0.1:8000/${pd.thumbnail}`} alt="" />
-                                </td>
+                                    {/* ----------- Thumbnail Image ------------- */}
+                                    <td className='text-center'>
+                                        <img className='img-fluid' src={`http://127.0.0.1:8000/${pd.thumbnail}`} alt="" />
+                                    </td>
 
-                                <td>
-                                    <span className='me-1'>{pd.name}</span>
+                                    <td>
+                                        <span className='me-1'>{pd.name}</span>
+                                        {
+                                            (pd.stock === 0) ?
+                                                (
+                                                    <span className='out-of-stock'>Out of Stock</span>
+                                                )
+                                                :
+                                                (
+                                                    <></>
+                                                )
+                                        }
+
+
+                                    </td>
+                                    <td>{pd.category}</td>
+                                    <td>{pd.category}</td>
+                                    <td>{pd.price}</td>
+
                                     {
-                                        (pd.stock === 0) ?
-                                            (
-                                                <span className='out-of-stock'>Out of Stock</span>
-                                            )
-                                            :
-                                            (
-                                                <></>
-                                            )
+                                        renderStocktd(pd.stock)
                                     }
 
-
-                                </td>
-                                <td>{pd.category}</td>
-                                <td>{pd.category}</td>
-                                <td className='no-wrap-100'>{pd.price}</td>
-
-                                {
-                                    renderStocktd(pd.stock)
-                                }
-
-                                <td className='no-wrap-100'>{pd.price}</td>
+                                    <td>{pd.price}</td>
 
 
-                                <td className='action'>
-                                    <button className='btn text-muted'><i className="bi bi-eye-fill"></i></button>
-                                    <button className='btn text-success'><i className="bi bi-pencil-square"></i></button>
-                                    <button className='btn text-danger' onClick={() => deleteProduct(pd.id)}><i className="bi bi-trash"></i></button>
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-
+                                    <td className='action'>
+                                        <button className='btn text-muted'><i className="bi bi-eye-fill"></i></button>
+                                        <button className='btn text-success'><i className="bi bi-pencil-square"></i></button>
+                                        <button className='btn text-danger' onClick={() => deleteProduct(pd.id)}><i className="bi bi-trash"></i></button>
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
                 {/* -------- Pagination ---------- */}
                 <div className='pagination'>

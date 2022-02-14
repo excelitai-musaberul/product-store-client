@@ -14,7 +14,6 @@ function PrivateRoute({ children }) {
     else {
         return validUser ? children : <Navigate to="/" />;
     }
-
 }
 
 export default PrivateRoute;

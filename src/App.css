@@ -1,19 +1,31 @@
 :root {
-    --primary-bg: rgb(46, 26, 8);
-    --primary-bg-hover: rgb(97, 50, 9);
-    --primary-text-hover: rgb(207, 167, 131);
+    --primary-bg: rgb(53, 53, 53);
+    --primary-bg-hover: rgb(87, 87, 87);
+    --primary-text-hover: rgb(219, 219, 219);
 }
 
+button {
+    outline: none!important;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
 
 .button-primary-filled {
     background-color: var(--primary-bg);
     color: white;
 }
+
 .button-primary-filled:hover {
     background-color: var(--primary-bg-hover);
     color: white;
 }
 
+input[type="button"]
+{ 
+    outline:none;
+}
 
 /* ------------- Section Title ------------ */
 .section-title-icon {
@@ -31,7 +43,7 @@
 
 .custom-table {
     width: 100%;
-    table-layout: fixed;
+    /* table-layout: fixed; */
 }
 
 .custom-table tr {
@@ -42,6 +54,12 @@
     border-bottom: 0;
 }
 
+.custom-table td,
+.custom-table th{
+    padding: 2px 12px;
+}
+
+/* 
 
 .custom-table th,
 .custom-table td {
@@ -61,24 +79,25 @@
 }
 
 .custom-table th.no-wrap-80,
-.custom-table td.no-wrap-80 { 
-    width: 80px;
+.custom-table td.no-wrap-80 {
+    max-width: 80px;
 }
+
 .custom-table th.no-wrap-100,
-.custom-table td.no-wrap-100 { 
-    width: 100px;
+.custom-table td.no-wrap-100 {
+    max-width: 100px;
 }
 
 .custom-table th.no-wrap-120,
-.custom-table td.no-wrap-120 { 
-    width: 120px;
+.custom-table td.no-wrap-120 {
+    max-width: 120px;
 }
 
 .custom-table th.action-heading,
 .custom-table td.action {
     text-align: center;
-    width: 100px;
-}
+    max-width: 100px;
+} */
 
 .custom-table .action button {
     padding: 5px;
@@ -113,5 +132,5 @@
 }
 
 .pagination ul li .btn.active {
-    background-color: rgb(41, 41, 41);    
+    background-color: rgb(41, 41, 41);
 }

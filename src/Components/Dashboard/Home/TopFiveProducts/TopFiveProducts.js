@@ -7,7 +7,7 @@ const TopFiveProducts = () => {
             <ul>
                 <li>
                     <div className='top-five-products-cont'>
-                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt="" srcset="" />
+                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt=""/>
                         <div className='ms-2'>
                             <h6 className='mb-1'>HP Laptop Core i5 15'6 Inch 256 GB GB SSD</h6>
                             <div className='d-flex justify-content-between'>
@@ -21,7 +21,7 @@ const TopFiveProducts = () => {
                 </li>
                 <li>
                     <div className='top-five-products-cont'>
-                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt="" srcset="" />
+                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt="" />
                         <div className='ms-2'>
                             <h6 className='mb-1'>HP Laptop Core i5 15'6 Inch 256 GB GB SSD</h6>
                             <div className='d-flex justify-content-between'>
@@ -35,7 +35,7 @@ const TopFiveProducts = () => {
                 </li>
                 <li>
                     <div className='top-five-products-cont'>
-                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt="" srcset="" />
+                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt=""/>
                         <div className='ms-2'>
                             <h6 className='mb-1'>HP Laptop Core i5 15'6 Inch 256 GB GB SSD</h6>
                             <div className='d-flex justify-content-between'>
@@ -49,7 +49,7 @@ const TopFiveProducts = () => {
                 </li>
                 <li>
                     <div className='top-five-products-cont'>
-                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt="" srcset="" />
+                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt=""/>
                         <div className='ms-2'>
                             <h6 className='mb-1'>HP Laptop Core i5 15'6 Inch 256 GB GB SSD</h6>
                             <div className='d-flex justify-content-between'>
@@ -63,7 +63,7 @@ const TopFiveProducts = () => {
                 </li>
                 <li>
                     <div className='top-five-products-cont'>
-                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt="" srcset="" />
+                        <img className='img-fluid' src="/./assets/images/laptop.jpg" alt=""/>
                         <div className='ms-2'>
                             <h6 className='mb-1'>HP Laptop Core i5 15'6 Inch 256 GB GB SSD</h6>
                             <div className='d-flex justify-content-between'>

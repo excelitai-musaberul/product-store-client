@@ -40,7 +40,7 @@ const img = {
 const AddProduct = () => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
 
-    const onSubmit = data => {        
+    const onSubmit = data => {
         const token = localStorage.getItem('token');
 
         axios.post('http://127.0.0.1:8000/api/products/', data, {
@@ -49,13 +49,31 @@ const AddProduct = () => {
             }
         })
             .then(res => {
-                if (res.data.id) {
-                    console.log(res.data);
-                    alert(`Added New Product ${res.data.id}`);
-                    reset();
+                if (res.data.id) {                   
+                    files?.forEach(file => {                       
+
+                        const formData = new FormData();
+                        formData.append('productId', res.data.id);
+                        formData.append('file', file); 
+                       
+                        axios.post('http://127.0.0.1:8000/api/productsimage', formData, {
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                                'content-type': 'multipart/form-data'
+                            }
+                        }
+                        ).then(res => {                           
+                            reset();
+                            setFiles([]);
+                            alert('New Product Added');
+                        })
+                    })
+
                 }
             });
     }
+
+
 
 
     const [files, setFiles] = useState([]);

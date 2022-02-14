@@ -7,7 +7,7 @@ import './Login.css';
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { loginIn, hasValidUser } = useAuth();
+    const { loginIn, hasValidUser, setUser } = useAuth();
     let navigate = useNavigate();
 
     const handleEmailChange = e => {
@@ -22,31 +22,41 @@ const Login = () => {
         loginIn(email, password)
             .then(response => {
                 localStorage.setItem('token', response.data.token);
-                localStorage.setItem('user', JSON.stringify(response.data.user));  
-                if (response.data.user.email) {                 
+                if (response.data.user.email) {
                     navigate('/dashboard/home');
                 }
             });
     }
 
 
-    useEffect(()=>{
-        if(hasValidUser()){
-            navigate('/dashboard/home');
-        }        
+    useEffect(() => {
+        hasValidUser()
+            .then(res => {
+                if (res.data.email) {
+                    navigate('/dashboard/home');
+                }
+            });
     }, [])
 
     return (
-        <div className="login">
-            <div className="form">
-                <form className="login-form">
-                    <span className="material-icons">Login</span>
-                    <input type="text" onBlur={(e) => handleEmailChange(e)} placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
-                    <input type="password" onBlur={(e) => handlePasswordChange(e)} placeholder="password" required />
-                    <button onClick={(e) => loginOnClick(e)} >login</button>
-                </form>            
+        <div className="login-container">
+            <div className='login-title'>
+                <h1>Welcome to E-Commerce Admin Panel</h1>
+                <h2>Powered by <span>Excel IT AI</span></h2>
+            </div>
+
+            <div className="login">
+                <div className="form">
+                    <form className="login-form">
+                        <h2>Login</h2>
+                        <input type="text" onBlur={(e) => handleEmailChange(e)} placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+                        <input type="password" onBlur={(e) => handlePasswordChange(e)} placeholder="password" required />
+                        <button onClick={(e) => loginOnClick(e)} >login</button>
+                    </form>
+                </div>
             </div>
         </div>
+
     );
 };
 

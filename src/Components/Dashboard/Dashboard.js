@@ -3,11 +3,12 @@ import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react/cjs/react.development';
 import './Dashboard.css';
 import Logo from '.././../Images/logo.png';
+import useAuth from '../../Hooks/useAuth';
+import { useEffect } from 'react';
 
 const Dashboard = () => {
-    const [customizeSiteSubMenuClass, setCustomizeSiteSubMenuClass] = useState('d-none');
-    const [isCustomizeSiteSubMenuOpen, setIsCustomizeSiteSubMenuOpen] = useState(false);
 
+    const [role, setRole] = useState('');
     const [userMenuClass, setUserMenuClass] = useState('d-none');
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
@@ -15,16 +16,18 @@ const Dashboard = () => {
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
 
-    const customizeSiteSubMenuToggle = () => {
-        if (isCustomizeSiteSubMenuOpen) {
-            setCustomizeSiteSubMenuClass('d-none');
-            setIsCustomizeSiteSubMenuOpen(false);
-        }
-        else {
-            setCustomizeSiteSubMenuClass('d-block');
-            setIsCustomizeSiteSubMenuOpen(true);
-        }
-    }
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const { logout, getUserRole } = useAuth();
+
+
+    useEffect(() => {
+        getUserRole()
+            .then(res => {
+                setRole(res.data.role);
+            })
+    }, [])
+
 
     const toggleUserMenu = () => {
         if (isUserMenuOpen) {
@@ -48,24 +51,43 @@ const Dashboard = () => {
         }
     }
 
+
+    const toogleMobileMenu = () => {
+        if (isMobileMenuOpen) {
+            setIsMobileMenuOpen(false);
+        }
+        else {
+            setIsMobileMenuOpen(true);
+        }
+    }
+
     return (
         <div className='dashboard'>
-            <div className="sidemenu">
+            <div className={"sidemenu " + (isMobileMenuOpen ? 'visible' : '')}>
                 <ul>
-                    <h3>E-com Admin</h3>
+                    <div className='d-flex align-items-center px-2'>
+                        <button onClick={toogleMobileMenu} className='btn close-sidemenu-btn'><i className="fa-solid fa-arrow-left"></i></button>
+                        <h3>E-com Admin</h3>
+                    </div>
                     <li><Link to={`home`}><i className="bi bi-speedometer2"></i> Dashboard</Link> </li>
-                    <li><Link to={`products`}><i className="bi bi-list-task"></i> Products</Link> </li>
-                    <li><Link to={`categories`}><i className="bi bi-diagram-3"></i> Categories</Link> </li>
-                    <li><Link to={`categories`}><i className="bi bi-file-earmark-check"></i> Orders</Link> </li>
-                    <li><a href='javascript:void(0)' onClick={() => customizeSiteSubMenuToggle()} ><i className="bi bi-brush"></i> Customize Site</a> </li>
-                    <ul className={`sub-sidemenu ${customizeSiteSubMenuClass}`}>
-                        <li><Link to={`products`}>Top Banner</Link></li>
-                        <li><Link to={`products`}>Promotion</Link></li>
-                        <li><Link to={`products`}>On-going Sale</Link></li>
-                    </ul>
-                    <li><Link to={`addproduct`}><i className="bi bi-file-bar-graph"></i> Report</Link> </li>
-                    <li><Link to={`addproduct`}><i className="bi bi-person"></i> My Profile</Link> </li>
-                    <li><Link to={`addproduct`}><i className="bi bi-gear"></i> Settings</Link> </li>
+                    {
+                        (role === 'admin') ?
+                            (
+                                <>
+                                    <li><Link to={`products`}><i className="bi bi-list-task"></i> Products</Link> </li>
+                                    <li><Link to={`categories`}><i className="bi bi-diagram-3"></i> Categories</Link> </li>
+                                    <li><Link to={`categories`}><i className="bi bi-file-earmark-check"></i> Orders</Link> </li>
+                                </>
+                            ) :
+                            (
+                                <>
+                                    <li><Link to={`addproduct`}><i className="bi bi-file-bar-graph"></i> Report</Link> </li>
+                                    <li><Link to={`addproduct`}><i className="bi bi-person"></i> My Profile</Link> </li>
+                                    <li><Link to={`addproduct`}><i className="bi bi-gear"></i> Settings</Link> </li>
+                                </>
+                            )
+                    }
+
                 </ul>
 
                 <div className='sidemenu-credit'>
@@ -75,11 +97,15 @@ const Dashboard = () => {
             </div>
             <div className="main-content">
                 <div className="top-nav">
-                    <p>Welcome to Admin Dashboard</p>
+                    <div className='d-flex align-items-center'>
+                        <button onClick={toogleMobileMenu} className='btn sidemenu-btn'><i className="fa-solid fa-bars"></i></button>
+                        <p>Welcome to Admin Dashboard</p>
+                    </div>
+
                     <div>
                         <button className='btn px-1'><i className="bi bi-question-circle"></i></button>
                         <button onClick={() => toggleNotificationMenu()} className='btn px-1'><i className="bi bi-bell"></i></button>
-                        <button onClick={() => toggleUserMenu()} className='btn'>Seyam Khan <img height={30} height={30} className='ms-1' src="../assets/images/profile.png" alt="" /> </button>
+                        <button onClick={() => toggleUserMenu()} className='btn'> <span className='profile-name'>Seyam Khan</span> <img height={30} height={30} className='ms-1' src="../assets/images/profile.png" alt="" /> </button>
 
                         {/* --------------- User Profile Menu ---------------------- */}
                         <div className={`float-user-options ${userMenuClass}`}>
@@ -90,7 +116,7 @@ const Dashboard = () => {
                             <p className='text-center mb-3'>Full-Stack Web Developer</p>
 
                             <button className='btn d-block'><i className="bi bi-people me-1"></i> My Profile</button>
-                            <button className='btn'><i className="bi bi-box-arrow-right me-1"></i> Log Out</button>
+                            <button onClick={() => logout()} className='btn'><i className="bi bi-box-arrow-right me-1"></i> Log Out</button>
 
 
                         </div>

@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AdminRoute from './Components/AdminRoute/AdminRoute';
 import AddProduct from './Components/Dashboard/AddProduct/AddProduct';
 import Categories from './Components/Dashboard/Categories/Categories';
 import Dashboard from './Components/Dashboard/Dashboard';
@@ -15,7 +16,7 @@ function App() {
         <Route path="/" element={<Login />}></Route>
         <Route path="/dashboard" element={<PrivateRoute><Dashboard></Dashboard></PrivateRoute>}>
           <Route path="home" element={<PrivateRoute><Home></Home> </PrivateRoute>} />
-          <Route path="products" element={<PrivateRoute><Products></Products></PrivateRoute>}></Route>
+          <Route path="products" element={<AdminRoute><Products></Products></AdminRoute>}></Route>
           <Route path="addproduct" element={<PrivateRoute><AddProduct></AddProduct> </PrivateRoute>}/>
           <Route path="categories" element={<PrivateRoute> <Categories></Categories> </PrivateRoute>}/>
         </Route>

@@ -62,7 +62,7 @@ const Summary = () => {
             </div>
 
 
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-4 g-4">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4">
                 {
                     summaryData.map(data => <SummaryCard
                         key={data.id}

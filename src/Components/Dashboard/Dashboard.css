@@ -3,6 +3,8 @@
   height: 100vh;
   background-color: var(--primary-bg);
   width: 220px;
+  z-index: 999999;
+  transition: all 0.3s ease;
 }
 
 .sidemenu ul {
@@ -21,7 +23,7 @@
 }
 
 .sidemenu ul h3 {
-  padding: 15px 5px 15px 25px;
+  padding: 15px 5px 15px 15px;
   color: white;
 }
 
@@ -45,6 +47,13 @@
   font-size: 14px;
 }
 
+.sidemenu-btn {
+  display: none;
+}
+
+.close-sidemenu-btn {
+  display: none;
+}
 
 
 .main-content {
@@ -99,7 +108,7 @@
 }
 
 .main-content .top-nav .float-user-options button:hover {
-  color: var(--primary-text-hover);
+  color: rgb(94, 94, 94);
 }
 
 .main-content .top-nav .float-notifications {
@@ -107,7 +116,7 @@
   max-width: 280px;
   z-index: 999999;
   background-color: rgb(236, 236, 236);
-  color: black;  
+  color: black;
   top: 50px;
   right: 50px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -119,12 +128,14 @@
   padding-top: 15px;
   padding-bottom: 10px;
 }
-.main-content .top-nav .float-notifications ul li{
+
+.main-content .top-nav .float-notifications ul li {
   font-size: 14px;
   border-bottom: 1px solid rgb(209, 209, 209);
   padding: 5px 10px;
 }
-.main-content .top-nav .float-notifications ul li:last-child{ 
+
+.main-content .top-nav .float-notifications ul li:last-child {
   border-bottom: 0;
 }
 
@@ -150,4 +161,56 @@
   color: white;
   text-align: center;
   margin-bottom: 0;
+}
+
+
+@media screen and (max-width: 767px) {
+  .sidemenu {
+    margin-left: -220px;
+  }
+
+  .sidemenu.visible {
+    margin-left: 0;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .sidemenu-btn {
+    color: white;
+    display: block;
+    font-size: 18px;
+    padding: 0 6px;
+    margin-right: 10px;
+    font-weight: 400;
+  }
+
+  .sidemenu-btn:hover {
+    color: rgb(255, 200, 200);
+  }
+
+  .close-sidemenu-btn {
+    color: white;
+    display: block;
+    font-size: 20px;
+    padding: 0 6px;
+    margin-right: 10px;
+    font-weight: 400;
+  }
+
+  .close-sidemenu-btn:hover {
+    color: rgb(255, 200, 200);
+  }
+
+  .sidemenu ul h3 {
+    font-size: 22px;
+    padding: 15px 5px 15px 5px;
+    color: white;
+    margin-bottom: 0;
+  }
+
+  .profile-name {
+    display: none;
+  }
 }
